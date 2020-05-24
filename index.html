@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="main.js" ></script>
+</head>
+<body>
+<div style="text-align: center; margin-top: 15%">
+    <p>Put array, separate elements with ','</p>
+    <p>and select sort option</p>
+    <label for="array">Array</label>
+    <input type="text" id="array"/>
+    <select id="selected">
+        <option value="up" selected>up</option>
+        <option value="down">down</option>
+    </select>
+    <input type="button" value="Sort" onclick="sort()"/><br>
+    <span id="outarray"></span>
+</div>
+
+<script>
+    function sort() {
+        let array = document.getElementById("array").value.split(',').map(x => +x);
+        if ((array.some(x => Number.isNaN(x)))||(array.length <=1)){
+            alert("Array is empty or it has entered incorrect symbol, try again");
+            return;
+        }
+        let param = document.getElementById("selected").value;
+        document.getElementById("outarray").innerText = sortArray(array,param);
+    }
+</script>
+</body>
+</html>
